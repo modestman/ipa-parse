@@ -3,7 +3,7 @@ import Foundation
 
 if CommandLine.arguments.count > 1 {
     do {
-        let parser = IpaParser(file: arguments[1])
+        let parser = IpaParser(file: CommandLine.arguments[1])
         try parser.run()
     } catch let e as ParserErrors {
         print(e.localizedDescription)
