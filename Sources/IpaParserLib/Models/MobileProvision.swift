@@ -17,7 +17,7 @@ struct MobileProvision: Decodable {
     var expirationDate: Date
     var entitlements: Entitlements
     var developerCertificates: [Data]
-    var provisionedDevices: [String]
+    var provisionedDevices: [String]?
     var provisionsAllDevices: Bool?
     
     private enum CodingKeys : String, CodingKey {
@@ -36,7 +36,7 @@ struct MobileProvision: Decodable {
     
     var profileType: String {
         let type: String
-        if !provisionedDevices.isEmpty {
+        if !(provisionedDevices?.isEmpty ?? true) {
             if entitlements.getTaskAllow {
                 type = "Development"
             } else {

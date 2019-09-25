@@ -7,11 +7,11 @@ if CommandLine.arguments.count > 1 {
         try parser.run()
     } catch let e as ParserErrors {
         print(e.localizedDescription)
-        exit(-1)
+        exit(1)
     } catch let e as NSError {
         print(e.localizedDescription)
         exit(Int32(e.code))
     }
 } else {
-    // print help
+    print("You need to specify the path to the .ipa file")
 }
